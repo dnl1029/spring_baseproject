@@ -1,10 +1,10 @@
 package hello.core.common;
 
+import jakarta.annotation.PostConstruct;
+import jakarta.annotation.PreDestroy;
 import org.springframework.context.annotation.Scope;
 import org.springframework.context.annotation.ScopedProxyMode;
 import org.springframework.stereotype.Component;
-import javax.annotation.PostConstruct;
-import javax.annotation.PreDestroy;
 import java.util.UUID;
 @Component
 @Scope(value = "request", proxyMode = ScopedProxyMode.TARGET_CLASS)
@@ -18,6 +18,7 @@ public class MyLogger {
         System.out.println("[" + uuid + "]" + "[" + requestURL + "] " +
                 message);
     }
+
     @PostConstruct
     public void init() {
         uuid = UUID.randomUUID().toString();
